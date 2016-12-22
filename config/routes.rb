@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :images
   resources :comments
 
-  post '/images' => 'images#show_category'
+  post '/images/:category_name' => 'images#show_category'
   post '/images/:id' => 'images#comment'
   delete '/logout' => 'sessions#destroy', as: :logout
   resources :sessions, only: [:new, :create]

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :image
-  has_many :comment, through: :image
+  has_many :images
+  has_many :comment, through: :images
 end

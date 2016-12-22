@@ -1,10 +1,12 @@
 <%= render :partial => "partials/navbar" %>
+<div class="container">
 
 <% if logged_in? %>
+<div class="row">
   <% @images.each do |p| %>
-  <%= link_to image_path(p) do %>
-  <img src="<%= p.img_url %>" class="image"></a>
+  <div class="col-md-4"><%= link_to image_path(p) do %><img src="<%= p.img_url %>" class="image">
+    <% end %><p><%= p.img_caption %></p></div>
   <% end %>
-  <p><%= p.img_caption %></p>
-  <% end %>
+</div>
 <% end %>
+</div>

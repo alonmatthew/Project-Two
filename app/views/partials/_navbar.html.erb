@@ -14,7 +14,15 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">categories<span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">categories
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/images/fall">fall</a></li>
+            <li><a href="/images/winter">winter</a></li>
+            <li><a href="/images/spring">spring</a></li>
+          </ul>
+
 
 
         <% if logged_in? %>
@@ -46,8 +54,8 @@
 </nav>
 
 <script type="text/javascript">
-  $('.dropdown').on('click', function() {
-    $(this).toggleClass('dropdown open')
+  $('.dropdown').hover(function() {
+    $(this).fadeIn(500).toggleClass('dropdown open')
   })
 
 </script>

@@ -11,7 +11,9 @@
 <h2>Comments:</h2>
 <ul>
   <% @image.comments.each do |p| %>
+  <% if p.content %>
   <li><strong><%= p.user.username if p.user %></strong> : <%= p.content %></li>
+  <% end %>
   <% end %>
 </ul>
 
