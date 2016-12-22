@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def shows
   end
 
   def edit

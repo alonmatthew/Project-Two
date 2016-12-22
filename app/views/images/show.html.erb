@@ -1,0 +1,21 @@
+<%= render :partial => 'partials/navbar' %>
+<h4> <%= @image.user.username %> </h4>
+<img src="<%= @image.img_url %>" class="image">
+<h5>-<%= @image.img_caption %></h5>
+
+<%= form_for @comment, url: image_path(@image) do |f| %>
+  <%= f.text_area :content %>
+  <%= f.submit 'Add Comment' %>
+<% end %>
+
+<h2>Comments:</h2>
+<ul>
+  <% @image.comments.each do |p| %>
+  <li><strong><%= p.user.username if p.user %></strong> : <%= p.content %></li>
+  <% end %>
+</ul>
+
+<% if belongs_to_you? @image %>
+<%= link_to 'edit img', edit_image_path(@image) %>
+<%= link_to 'delete img', image_path(@image), method: 'delete', data: { confirm: 'Are you sure?' } %>
+<% end %>

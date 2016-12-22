@@ -1,0 +1,30 @@
+<%= render :partial => 'partials/navbar' %>
+
+<%= form_for @image, :html => {class: 'new_user form-horizontal'} do |f| %>
+    <div class="row"><legend class="col-md-4 col-md-offset-4">Upload Image:</legend></div>
+    <fieldset>
+        <div class="form-group">
+            <%= f.label :img_url, 'New Post', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.text_field :img_url, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.label :img_caption, 'Caption', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.text_field :img_caption, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.label :category, 'Category', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.select :category, ["Winter", "Fall", "Spring", "Summer"], class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+                <%= f.submit 'Upload', class: 'btn btn-success' %>
+            </div>
+        </div>
+    </fieldset>
+<% end %>
