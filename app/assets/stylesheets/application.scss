@@ -15,10 +15,38 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
-
+  .userimg {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    padding-bottom: 10px;
+    float: right;
+  }
  .image {
-   height: 250px;
-   width: 250px;
+   height: 300px;
+   width: 300px;
+   margin: 10px;
+ }
+
+ .image:hover {
+   opacity: 0.5;
+ }
+ .container {
+   text-align: center;
+ }
+ .column {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+ }
+ .col-md-4 {
+   padding: 0;
+ }
+ .nananav {
+   float: right;
+ }
+ .navnavnavnav {
+   float: right;
  }
 
   #title {

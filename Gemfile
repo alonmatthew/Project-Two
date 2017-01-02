@@ -4,6 +4,12 @@ ruby "2.3.1"
 
 gem 'rails_12factor', group: :production
 
+gem 'dotenv-rails', group: :development
+
+gem 'paperclip'
+
+gem 'aws-sdk'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

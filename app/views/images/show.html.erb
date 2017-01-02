@@ -1,23 +1,27 @@
 <%= render :partial => 'partials/navbar' %>
-<h4> <%= @image.user.username %> </h4>
-<img src="<%= @image.img_url %>" class="image">
-<h5>-<%= @image.img_caption %></h5>
 
-<%= form_for @comment, url: image_path(@image) do |f| %>
-  <%= f.text_area :content %>
-  <%= f.submit 'Add Comment' %>
-<% end %>
 
-<h2>Comments:</h2>
-<ul>
-  <% @image.comments.each do |p| %>
-    <% if p.content %>
-      <li><strong><%= p.user.username if p.user %></strong> : <%= p.content %></li>
+  <div class="container">
+
+
+    <img src="<%= @image.img_url %>" class="image">
+    <%= link_to user_path(@image.user.username) do %><strong><h4> <%= @image.user.username %>
+      <% end %>
+    </strong> : <%= @image.img_caption %></h4>
+  </div>
+  <div class="container">
+    <div class="column">
+
+      <%= form_for @comment, url: image_path(@image) do |f| %>  <%= f.text_area :content %>  <%= f.submit 'Add Comment' %>
+      <% end %>
+
+      <h3>Comments:</h3>
+      <ul>  <% @image.comments.each do |p| %>    <% if p.content %>      <li><strong><%= p.user.username if p.user %></strong> : <%=  p.content %></li>    <% end %>  <% end %>
+      </ul>
+    </div>
+
+    <% if belongs_to_you? @image %>
+      <%= link_to 'edit img', edit_image_path(@image) %>
+      <%= link_to 'delete img', image_path(@image), method: 'delete', data: { confirm: 'Are you sure?' } %>
     <% end %>
-  <% end %>
-</ul>
-
-<% if belongs_to_you? @image %>
-<%= link_to 'edit img', edit_image_path(@image) %>
-<%= link_to 'delete img', image_path(@image), method: 'delete', data: { confirm: 'Are you sure?' } %>
-<% end %>
+  </div>

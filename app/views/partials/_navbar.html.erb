@@ -1,14 +1,38 @@
 <nav class="navbar navbar-default">
+<div class="col-md-4">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
+
+    <div class="navbar-header nananav">
       <a id="title"class="navbar-brand" href="/">Wear&When</a>
     </div>
+  </div>
+</div>
+
+
+<div class="col-md-4">
+<ul class="nav navbar-nav navnavnavnav">
+
+  <% if logged_in? %>
+  <li id="usernav" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %>
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="/users/<%= current_user.id %>">profile</a></li>
+        <li><a href="/users/<%= current_user.id %>/edit">edit profile</a></li>
+        <li><a href="/images/new">upload image</a></li>
+      </ul>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
 
     <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="col-md-4">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav">
         <li id="sessionnav">
           <% if logged_in? %>
           <%= link_to "logout", logout_path, {method: "DELETE"} %>
@@ -17,23 +41,13 @@
           <% end %>
         </li>
       </ul>
+    </div>
+    </div>
 
-      <ul class="nav navbar-nav navbar-right">
-        <% if logged_in? %>
-        <li id="usernav" class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %>
-            <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="/users/<%= current_user.id %>">profile</a></li>
-              <li><a href="/users/<%= current_user.id %>/edit">edit profile</a></li>
-              <li><a href="/images/new">upload image</a></li>
-            </ul>
-          </li>
-          <% end %>
-        </ul>
 
-      </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+      <!-- /.navbar-collapse -->
+      <!-- /.navbar-collapse -->
+  <!-- /.container-fluid -->
 
 </nav>
 
