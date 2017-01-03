@@ -4,4 +4,4 @@ If you love fashion then you know it's difficult to choose an outfit sometimes. 
 
 ## Development Process
 Technologies Used: HTML, CSS/Bootstrap, Javascript/jQuery, Ruby/Ruby on Rails
- [Step by Step Process]: https://trello.com/b/qMlSNHmn/project-two
+[Step by Step Process](https://trello.com/b/qMlSNHmn/project-two)
