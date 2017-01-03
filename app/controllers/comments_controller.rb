@@ -18,5 +18,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      redirect_to image_path(params[:image_id])
+    end
   end
 end

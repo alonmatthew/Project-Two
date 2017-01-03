@@ -3,25 +3,43 @@
 
   <div class="container">
 
+    <div class="col-md-6">
+      <img src="<%= @image.img_url %>" class="showimage">
+      <%= link_to user_path(@image.user.username) do %>
 
-    <img src="<%= @image.img_url %>" class="image">
-    <%= link_to user_path(@image.user.username) do %><strong><h4> <%= @image.user.username %>
-      <% end %>
-    </strong> : <%= @image.img_caption %></h4>
-  </div>
-  <div class="container">
-    <div class="column">
+      <div class="imagelinks">
+        <% if belongs_to_you? @image %>
+        <%= link_to 'edit img', edit_image_path(@image) %>
+        <%= link_to 'delete img', image_path(@image), method: 'delete', data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
 
-      <%= form_for @comment, url: image_path(@image) do |f| %>  <%= f.text_area :content %>  <%= f.submit 'Add Comment' %>
-      <% end %>
-
-      <h3>Comments:</h3>
-      <ul>  <% @image.comments.each do |p| %>    <% if p.content %>      <li><strong><%= p.user.username if p.user %></strong> : <%=  p.content %></li>    <% end %>  <% end %>
-      </ul>
     </div>
 
-    <% if belongs_to_you? @image %>
-      <%= link_to 'edit img', edit_image_path(@image) %>
-      <%= link_to 'delete img', image_path(@image), method: 'delete', data: { confirm: 'Are you sure?' } %>
-    <% end %>
+    <div class="col-md-6 showcontent col-xs-9">
+      <strong><h4><a class="username" href="/users/<%= @image.user_id %>"><%= @image.user.username %></a>
+        <% end %>
+      </strong> : <%= @image.img_caption %></h4>
+
+      <div class="col-xs-4">
+
+
+      <h4>Comments: <%= @image.comments.count %></h4>
+      <ul><% @image.comments.each do |p| %>
+        <% if p.content %>
+          <a href="/users/<%= @image.user_id%>"><li><strong><%= p.user.username if p.user %></strong></a> : <%=  p.content %></li>
+          <% if belongs_to_you? @image %>
+          <%= link_to 'del', image_comment_path(@image,p), method: 'delete', data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        <% end %>
+      <% end %>
+      </ul>
+      <%= form_for @comment, url: image_path(@image) do |f| %>  <%= f.text_area :content %>  <%= f.submit 'Add Comment' %>
+      <% end %>
+    </div>
+    </div>
   </div>
+
+<script type="text/javascript">
+  $('.imagelinks').append(image)
+</script>

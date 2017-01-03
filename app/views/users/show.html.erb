@@ -1,13 +1,14 @@
 <%= render :partial => "partials/navbar" %>
 <div class="container">
   <div class="col-md-4">
-    <img src=" <%= current_user.profile_img %> " class="userimg">
+    <img src=" <%= @user.profile_img %> " class="userimg">
   </div>
 
 
   <div class="col-md-4">
-    <h2> <%= current_user.username %> </h2>
-    <p> <%= current_user.bio %> </p>
+    <h2> <%= @user.username %> </h2>
+    <h4> <%= @user.images.count %> posts</h4>
+    <p> <%= @user.bio %> </p>
   </div>
   <div class="col-md-4">
   </div>
@@ -15,12 +16,15 @@
 </div>
 
 <div class="container">
-  <% current_user.images.each do |p| %>
+  <% @user.images.each do |p| %>
     <%= link_to image_path(p) do %>
     <img src="<%= p.img_url %>" class="image">
     <% end %>
   <% end %>
 </div>
+
+<% if @user == current_user %>
 <div class="container">
   <%= link_to 'delete account', current_user, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
+<% end %>

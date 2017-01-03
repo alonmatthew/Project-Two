@@ -22,14 +22,29 @@
     padding-bottom: 10px;
     float: right;
   }
+  .showimage {
+    height: 300px;
+    width: 300px;
+    margin: 10px;
+  }
  .image {
    height: 300px;
    width: 300px;
    margin: 10px;
  }
-
+ .rootimages {
+   height: 333px;
+   width: 333px;
+   margin: 10px;
+ }
  .image:hover {
    opacity: 0.5;
+ }
+ .rootimages:hover {
+   opacity: 0.5;
+ }
+ .showcontent {
+   text-align: left;
  }
  .container {
    text-align: center;
