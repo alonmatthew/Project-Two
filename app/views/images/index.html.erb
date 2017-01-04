@@ -3,11 +3,16 @@
 <div class="container">
   <div class="row">
   <% @images.each do |p| %>
-    <div class="col-md-4"><%= link_to image_tag(p.user_post, class: "rootimages"), image_path(p) %>
+    <div class="col-md-4 ">
 
-      <div class="popup">
-        <%= p.comments.count %>
-      </div>
+      <%= link_to image_path(p), class: "item" do %>
+        <%= image_tag(p.user_post, class: "rootimages") %>
+        <div class="popup">
+          <%= p.comments.count %>
+        </div>
+      <% end %>
+
+
     <%= link_to user_path(p.user_id) do %><strong><p><%= p.user.username %><% end %></strong> : <%= p.img_caption %></p>
     </div>
   <% end %>
@@ -39,11 +44,3 @@
     </fieldset>
 <% end %>
 <% end %>
-
-
-<script type="text/javascript">
-
-  $('.rootimages').hover(function() {
-    $('.popup').toggle(display)
-  });
-</script>
