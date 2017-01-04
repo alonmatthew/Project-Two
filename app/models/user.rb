@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :images, dependent: :destroy
   has_many :comments, through: :images, dependent: :destroy
+  has_many :upvotes
   has_attached_file :profile_img,
                     styles: { medium: "333x333#", thumb: "150x150#" },
                     storage: :s3,

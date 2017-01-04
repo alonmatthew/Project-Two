@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get 'upvotes/create'
+
   root 'images#index'
   resources :users
   resources :images do
     resources :comments
+    resources :upvotes, only: :create
   end
 
   get '/images/:category_name' => 'images#show_category'

@@ -1,6 +1,7 @@
 class Image < ActiveRecord::Base
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :upvotes
   has_attached_file :user_post,
                     styles: { medium: "333x333#", thumb: "150x150#" },
                     storage: :s3,
