@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221225254) do
+ActiveRecord::Schema.define(version: 20170103232537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,12 +28,15 @@ ActiveRecord::Schema.define(version: 20161221225254) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "images", force: :cascade do |t|
-    t.string   "img_url"
     t.string   "img_caption"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "category"
+    t.string   "user_post_file_name"
+    t.string   "user_post_content_type"
+    t.integer  "user_post_file_size"
+    t.datetime "user_post_updated_at"
   end
 
   add_index "images", ["user_id"], name: "index_images_on_user_id", using: :btree
@@ -42,10 +45,13 @@ ActiveRecord::Schema.define(version: 20161221225254) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "profile_img"
     t.string   "bio"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "profile_img_file_name"
+    t.string   "profile_img_content_type"
+    t.integer  "profile_img_file_size"
+    t.datetime "profile_img_updated_at"
   end
 
   add_foreign_key "comments", "images"

@@ -27,6 +27,12 @@ class ImagesController < ApplicationController
   end
 
   def update
+    @image = Image.find(params[:id])
+    if @image.update(image_params)
+      redirect_to image_path
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -48,7 +54,7 @@ class ImagesController < ApplicationController
 
   private
     def image_params
-    return params.require(:image).permit(:img_url, :img_caption, :category)
+    return params.require(:image).permit(:user_post, :img_caption, :category)
     end
 
     def comment_params

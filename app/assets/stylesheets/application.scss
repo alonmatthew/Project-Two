@@ -15,6 +15,12 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ .popup {
+   display: none;
+ }
+ .popupopen {
+   display: block;
+ }
   .userimg {
     border-radius: 50%;
     height: 150px;
